@@ -13,11 +13,11 @@ export default function MainLayout() {
       </header>
       <main className="justify-center p-4 h-screen ">
         <div className="flex gap-8 p-4">
-          <TodayCard width="w-1/2" height="h-[500px]" />
-          <TodayHighlight width="w-1/2" height="h-[500px]" />
+          <TodayCard width="w-1/2" height="h-auto" />
+          <TodayHighlight width="w-1/2" height="h-auto" />
         </div>
         <div className="flex gap-4 p-4">
-          <ForecastCard width="w-full" height="h-[300px]" />
+          <ForecastCard width="w-full" height="h-full"  />
         </div>
       </main>
       <footer className="">

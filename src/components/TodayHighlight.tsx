@@ -4,7 +4,7 @@ import Visibility from "../assets/images/visibility.png";
 import Max from "../assets/images/temp-max.png";
 import Min from "../assets/images/temp-min.png";
 import Pressure from "../assets/images/visibility.png";
-
+import HighlightCard from "./CardsHighlight"
 interface TodayHighlightProps {
   width: string;
   height: string;
@@ -25,20 +25,7 @@ const items: HighlightItem[] = [
   { icon: Pressure, title: "Pressure", value: "1003 hPa" },
 ];
 
-// Subcomponente para cada tarjeta de destacado
-const HighlightCard: React.FC<HighlightItem> = ({ icon, title, value }) => {
-  return (
-    <div className="bg-white rounded-lg p-4 w-full flex flex-col items-center justify-center space-y-2 shadow-md hover:shadow-lg transition-shadow">
-      <div className="flex items-center gap-2">
-        <img src={icon} alt={`${title} icon`} className="w-8 h-8" />
-        <div>
-          <p className="text-xl font-semibold">{title}</p>
-          <p className="text-lg">{value}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+
 
 export default function TodayHighlight({ width, height }: TodayHighlightProps) {
   return (
@@ -51,7 +38,7 @@ export default function TodayHighlight({ width, height }: TodayHighlightProps) {
       </h1>
 
       {/* Grid de tarjetas */}
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
         {items.map((item, index) => (
           <HighlightCard key={index} {...item} />
         ))}

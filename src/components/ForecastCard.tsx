@@ -1,7 +1,22 @@
+import CardsDailyForecast from "./CardsDailyForecast";
+
 interface EmptyCardsProps {
   width: string;
   height: string;
 }
+interface dayItem{
+  name:string;
+  icon:string;
+  value:string;
+}
+const days: dayItem[]=[
+  {icon: "", title:"", },
+  {},
+  {},
+  {},
+]
+  
+
 export default function ForecastCard({ width, height }: EmptyCardsProps) {
   return (
     <div
