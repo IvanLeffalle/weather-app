@@ -1,27 +1,18 @@
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-export default function SearchBar() {
+
+interface SearchBarProps{
+  onSearch:any;
+}
+export default function SearchBar({onSearch}:SearchBarProps) {
   const [query, setQuery] = useState("");
 
-  const apiKey = import.meta.env.VITE_OPENWEATHER_KEY;
 
-  const handleSearch = async () => {
-    if (!query) return;
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}`
-      );
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log("Error", error);
-    }
-  };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
-      handleSearch();
+      onSearch(query);
     }
   };
   return (
