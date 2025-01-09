@@ -4,10 +4,12 @@ import Visibility from "../assets/images/visibility.png";
 import Max from "../assets/images/temp-max.png";
 import Min from "../assets/images/temp-min.png";
 import Pressure from "../assets/images/visibility.png";
-import HighlightCard from "./CardsHighlight"
+import HighlightCard from "./CardsHighlight";
+import { useEffect } from "react";
 interface TodayHighlightProps {
   width: string;
   height: string;
+  data: any;
 }
 
 interface HighlightItem {
@@ -16,18 +18,19 @@ interface HighlightItem {
   value: string;
 }
 
-const items: HighlightItem[] = [
-  { icon: windy, title: "Wind", value: "4.63 meter/sec" },
-  { icon: Humidity, title: "Humidity", value: "89%" },
-  { icon: Visibility, title: "Visibility", value: "10000 meters" },
-  { icon: Max, title: "Max", value: "3°C" },
-  { icon: Min, title: "Min", value: "1°C" },
-  { icon: Pressure, title: "Pressure", value: "1003 hPa" },
-];
-
-
-
-export default function TodayHighlight({ width, height }: TodayHighlightProps) {
+export default function TodayHighlight({
+  width,
+  height,
+  data,
+}: TodayHighlightProps) {
+  const items: HighlightItem[] = [
+    { icon: windy, title: "Wind", value: `${data.wind.speed}m/s` },
+    { icon: Humidity, title: "Humidity", value: `${data.main.humidity}%` },
+    { icon: Visibility, title: "Visibility", value: `${data.visibility}m` },
+    { icon: Max, title: "Max", value: `${data.main.temp_max}°C` },
+    { icon: Min, title: "Min", value: `${data.main.temp_min}°C` },
+    { icon: Pressure, title: "Pressure", value: `${data.main.pressure}hPa` },
+  ];
   return (
     <div
       className={`flex flex-col ${width} ${height} items-center  bg-white  shadow-lg rounded-lg space-y-4 justify-between p-8`}
